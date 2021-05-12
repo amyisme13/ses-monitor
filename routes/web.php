@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Rennokki\LaravelSnsEvents\Http\Controllers\SnsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::post('/sns-endpoint', [SnsController::class, 'handle']);
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })
+    ->name('dashboard');
