@@ -5,7 +5,7 @@
     <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
       <inertia-link
         v-if="$page.props.user"
-        href="/dashboard"
+        :href="route('dashboard')"
         class="text-sm text-gray-700 underline"
       >
         Dashboard

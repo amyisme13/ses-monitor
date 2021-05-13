@@ -24,7 +24,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::post('/sns-endpoint', [SnsController::class, 'handle']);
 
