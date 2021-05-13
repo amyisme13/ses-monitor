@@ -1,12 +1,13 @@
 import { defineConfig } from 'windicss/helpers';
 import defaultTheme from 'windicss/defaultTheme';
 import forms from 'windicss/plugin/forms';
+import lineClamp from 'windicss/plugin/line-clamp';
 import typography from 'windicss/plugin/typography';
 
 export default defineConfig({
   darkMode: 'class',
   safelist: ['prose', 'prose-sm', 'm-auto'],
-  plugins: [forms, typography],
+  plugins: [forms, lineClamp, typography],
 
   extract: {
     include: [

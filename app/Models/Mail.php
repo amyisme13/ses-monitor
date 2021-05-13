@@ -25,4 +25,9 @@ class Mail extends Model
     protected $casts = [
         'sent_at' => 'datetime',
     ];
+
+    public function recipients()
+    {
+        return $this->hasMany(MailRecipient::class);
+    }
 }
