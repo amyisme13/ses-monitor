@@ -1,18 +1,20 @@
 <template>
-  <div class="flex py-4 px-4 sm:px-8 gap-4 items-center">
-    <div class="rounded-full flex h-8 text-white w-8 items-center justify-center" :class="color">
-      <i-uil-check v-if="color === 'bg-green-500'" />
-      <i-uil-times v-else-if="color === 'bg-red-500'" />
-      <i-uil-exclamation v-else-if="color === 'bg-yellow-500'" />
-      <i-uil-minus v-else />
-    </div>
+  <inertia-link :href="route('mails.show', mail)">
+    <div class="flex py-4 px-4 sm:px-8 gap-4 items-center">
+      <div class="rounded-full flex h-8 text-white w-8 items-center justify-center" :class="color">
+        <i-uil-check v-if="color === 'bg-green-500'" />
+        <i-uil-times v-else-if="color === 'bg-red-500'" />
+        <i-uil-exclamation v-else-if="color === 'bg-yellow-500'" />
+        <i-uil-minus v-else />
+      </div>
 
-    <div class="flex-1">
-      <p class="font-semibold line-clamp-1">{{ mail.subject }}</p>
-      <p class="text-gray-600 line-clamp-1">{{ recipients }}</p>
+      <div class="flex-1">
+        <p class="font-semibold line-clamp-1">{{ mail.subject }}</p>
+        <p class="text-gray-600 line-clamp-1">{{ recipients }}</p>
+      </div>
+      <div class="text-sm sm:text-base whitespace-nowrap">{{ sentAt }}</div>
     </div>
-    <div>{{ sentAt }}</div>
-  </div>
+  </inertia-link>
 </template>
 
 <script lang="ts">
@@ -76,7 +78,7 @@ export default defineComponent({
       return format(date, 'd MMM');
     });
 
-    return { recipients, color, sentAt };
+    return { recipients, color, sentAt, route: window.route };
   },
 });
 </script>

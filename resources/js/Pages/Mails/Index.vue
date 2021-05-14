@@ -4,29 +4,28 @@
       <h2 class="font-semibold text-xl leading-tight text-gray-800">Mails</h2>
     </template>
 
-    <div class="py-12">
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="flex max-w-md mb-4 px-4 sm:px-0">
-          <select class="border-none rounded-l shadow pr-8 focus:z-10" v-model="form.field">
-            <option value="subject">Subject</option>
-            <option value="recipient">Recipient</option>
-          </select>
+    <div class="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
+      <div class="flex max-w-md mb-4 px-4 sm:px-0">
+        <select class="border-none rounded-l shadow pr-8 focus:z-10" v-model="form.field">
+          <option value="subject">Subject</option>
+          <option value="recipient">Recipient</option>
+        </select>
 
-          <input
-            class="border-none rounded-r shadow w-full"
-            type="search"
-            placeholder="Search..."
-            v-model="form.search"
-          />
-        </div>
-
-        <MailList :mails="mails.data" />
-        <Pagination
-          class="mt-4 justify-end"
-          :next="mails.next_page_url"
-          :prev="mails.prev_page_url"
+        <input
+          class="border-none rounded-r shadow w-full"
+          type="search"
+          placeholder="Search..."
+          v-model="form.search"
         />
       </div>
+
+      <MailList :mails="mails.data" />
+
+      <Pagination
+        class="px-4 sm:px-0 mt-4 justify-end"
+        :next="mails.next_page_url"
+        :prev="mails.prev_page_url"
+      />
     </div>
   </AppLayout>
 </template>

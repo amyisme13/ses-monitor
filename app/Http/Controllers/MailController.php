@@ -33,6 +33,6 @@ class MailController extends Controller
      */
     public function show(Mail $mail)
     {
-        //
+        return Inertia::render('Mails/Show', compact('mail'));
     }
 }

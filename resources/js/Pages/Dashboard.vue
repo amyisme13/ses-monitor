@@ -4,33 +4,31 @@
       <h2 class="font-semibold text-xl leading-tight text-gray-800">Dashboard</h2>
     </template>
 
-    <div class="py-12">
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <h3 class="mb-4 px-2 text-2xl">Last 7 days</h3>
-        <div
-          class="divide-y bg-white flex flex-col divide-gray-300 shadow overflow-hidden sm:rounded-lg md:(divide-y-0 divide-x flex-row items-center)"
-        >
-          <StatItem text="Total Mails Sent" :value="stats.mails" :past-value="pastStats.mails" />
+    <div class="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
+      <h3 class="mb-4 px-2 text-2xl">Last 7 days</h3>
+      <div
+        class="divide-y bg-white flex flex-col divide-gray-300 shadow overflow-hidden sm:rounded-lg md:(divide-y-0 divide-x flex-row items-center)"
+      >
+        <StatItem text="Total Mails Sent" :value="stats.mails" :past-value="pastStats.mails" />
 
-          <StatItem
-            as-percentage
-            text="Delivery Rate"
-            :value="deliveryRate"
-            :past-value="pastDeliveryRate"
-          />
+        <StatItem
+          as-percentage
+          text="Delivery Rate"
+          :value="deliveryRate"
+          :past-value="pastDeliveryRate"
+        />
 
-          <StatItem
-            as-percentage
-            reversed
-            text="Bounce Rate"
-            :value="bounceRate"
-            :past-value="pastBounceRate"
-          />
-        </div>
-
-        <h3 class="mt-8 mb-4 px-2 text-2xl">Latest Mails</h3>
-        <MailList :mails="mails" />
+        <StatItem
+          as-percentage
+          reversed
+          text="Bounce Rate"
+          :value="bounceRate"
+          :past-value="pastBounceRate"
+        />
       </div>
+
+      <h3 class="mt-8 mb-4 px-2 text-2xl">Latest Mails</h3>
+      <MailList :mails="mails" />
     </div>
   </AppLayout>
 </template>
