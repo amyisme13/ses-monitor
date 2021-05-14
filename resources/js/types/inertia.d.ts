@@ -9,6 +9,14 @@ declare global {
     route: typeof ziggy;
   }
 
+  interface CursorPaginated<T> {
+    data: T[];
+    per_page: number;
+    path: string;
+    prev_page_url?: string;
+    next_page_url?: string;
+  }
+
   namespace Inertia {
     interface User {
       id: number;

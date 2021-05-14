@@ -20,6 +20,10 @@
                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                   Dashboard
                 </jet-nav-link>
+
+                <jet-nav-link :href="route('mails.index')" :active="route().current('mails.index')">
+                  Mails
+                </jet-nav-link>
               </div>
             </div>
 
@@ -130,6 +134,13 @@
               :active="route().current('dashboard')"
             >
               Dashboard
+            </jet-responsive-nav-link>
+
+            <jet-responsive-nav-link
+              :href="route('mails.index')"
+              :active="route().current('mails.index')"
+            >
+              Mails
             </jet-responsive-nav-link>
           </div>
 
