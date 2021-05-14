@@ -6,16 +6,29 @@
 
     <div class="py-12">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <h3 class="mb-4 px-2 text-2xl">Last 7 days</h3>
         <div
           class="divide-y bg-white flex flex-col divide-gray-300 shadow overflow-hidden sm:rounded-lg md:(divide-y-0 divide-x flex-row items-center)"
         >
-          <StatItem text="Total Mails Sent" :value="stats.total" />
-          <StatItem text="Delivery Rate" :value="`${deliveryRate}%`" />
-          <StatItem text="Bounce Rate" :value="`${bounceRate}%`" />
+          <StatItem text="Total Mails Sent" :value="stats.mails" :past-value="pastStats.mails" />
+
+          <StatItem
+            as-percentage
+            text="Delivery Rate"
+            :value="deliveryRate"
+            :past-value="pastDeliveryRate"
+          />
+
+          <StatItem
+            as-percentage
+            reversed
+            text="Bounce Rate"
+            :value="bounceRate"
+            :past-value="pastBounceRate"
+          />
         </div>
 
         <h3 class="mt-8 mb-4 px-2 text-2xl">Latest Mails</h3>
-
         <MailList :mails="mails" />
       </div>
     </div>
@@ -35,6 +48,7 @@ interface Stat {
   total: number;
   bounced: number;
   delivered: number;
+  mails: number;
 }
 
 export default defineComponent({
@@ -53,6 +67,10 @@ export default defineComponent({
       type: Object as PropType<Stat>,
       required: true,
     },
+    pastStats: {
+      type: Object as PropType<Stat>,
+      required: true,
+    },
   },
 
   setup(props) {
@@ -62,8 +80,15 @@ export default defineComponent({
 
     const deliveryRate = toPercent(props.stats.delivered / props.stats.total);
     const bounceRate = toPercent(props.stats.bounced / props.stats.total);
+    const pastDeliveryRate = toPercent(props.pastStats.delivered / props.pastStats.total);
+    const pastBounceRate = toPercent(props.pastStats.bounced / props.pastStats.total);
 
-    return { deliveryRate, bounceRate };
+    return {
+      deliveryRate: isNaN(deliveryRate) ? 0 : deliveryRate,
+      bounceRate: isNaN(bounceRate) ? 0 : bounceRate,
+      pastDeliveryRate: isNaN(pastDeliveryRate) ? 0 : pastDeliveryRate,
+      pastBounceRate: isNaN(pastBounceRate) ? 0 : pastBounceRate,
+    };
   },
 });
 </script>

@@ -6,6 +6,7 @@ use App\Models\Mail;
 use App\Models\MailRecipient;
 use App\Models\Recipient;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class StoreMail
@@ -116,5 +117,7 @@ class StoreMail
             $storedRecipient->save();
             $mailRecipient->save();
         }
+
+        Cache::forget('dashboard-data');
     }
 }
