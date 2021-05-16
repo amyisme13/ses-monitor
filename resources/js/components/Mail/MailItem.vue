@@ -1,5 +1,5 @@
 <template>
-  <inertia-link :href="route('mails.show', mail)">
+  <inertia-link class="block" :href="route('mails.show', mail)">
     <div class="flex py-4 px-4 sm:px-8 gap-4 items-center">
       <div class="rounded-full flex h-8 text-white w-8 items-center justify-center" :class="color">
         <i-uil-check v-if="color === 'bg-green-500'" />
