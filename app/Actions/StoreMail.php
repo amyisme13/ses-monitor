@@ -86,7 +86,7 @@ class StoreMail
         foreach ($allRecipients as $recipient) {
             $storedRecipient = Recipient::firstOrCreate(['email' => $recipient]);
 
-            $isResolved = in_array($storedRecipient->email, $recipients);
+            $isResolved = in_array($recipient, $recipients);
             $mailRecipient = MailRecipient::firstOrNew(
                 [
                     'recipient_id' => $storedRecipient->id,
