@@ -41,7 +41,12 @@ export default defineComponent({
   setup(props) {
     const changes = computed(() => {
       if (props.value !== undefined && props.pastValue !== undefined) {
-        return props.value - props.pastValue;
+        const value = props.value - props.pastValue;
+        if (!props.asPercentage) {
+          return value;
+        }
+
+        return Math.round(value * 10000) / 100;
       }
 
       return 0;
