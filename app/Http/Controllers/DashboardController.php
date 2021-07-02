@@ -57,13 +57,15 @@ class DashboardController extends Controller
                 ->limit(5)
                 ->get();
 
-            $last7Days = now()->subDays(7);
-            $last14Days = now()->subDays(14);
+            $current = now()->startOfDay();
+            $past = now()->subDays(1)->startOfDay();
 
-            $stats = $this->getStats($last7Days);
-            $pastStats = $this->getStats($last14Days, $last7Days);
+            $stats = $this->getStats($current);
+            $pastStats = $this->getStats($past, $current);
 
-            return compact('mails', 'stats', 'pastStats');
+            $title = 'Today';
+
+            return compact('mails', 'stats', 'pastStats', 'title');
         });
 
         return Inertia::render('Dashboard', $data);

@@ -5,7 +5,7 @@
     </template>
 
     <div class="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
-      <h3 class="mb-4 px-2 text-2xl">Last 7 days</h3>
+      <h3 class="mb-4 px-2 text-2xl">{{ title }}</h3>
       <div
         class="divide-y bg-white flex flex-col divide-gray-300 shadow overflow-hidden sm:rounded-lg md:(divide-y-0 divide-x flex-row items-center)"
       >
@@ -68,6 +68,10 @@ export default defineComponent({
     pastStats: {
       type: Object as PropType<Stat>,
       required: true,
+    },
+    title: {
+      type: String,
+      default: 'Today',
     },
   },
 
